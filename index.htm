@@ -32,6 +32,10 @@
 /* audio {
     display: none;
 } */
+
+body {
+    background-color: black;
+}
 </style>
 </head>
 <body>
@@ -40,10 +44,23 @@
     <img src="caro.jpeg" alt="Photo">
 </div>
 
-<audio autoplay loop>
+<audio id="audio" autoplay loop>
     <source src="pedro-pedro-pe.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
+<br><br>
+<button onclick="toggleAudio()">Toggle Audio</button>
+
+<script>
+    function toggleAudio() {
+        var audio = document.getElementById("audio");
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    }
+</script>
 
 </body>
 </html>
