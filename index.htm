@@ -14,15 +14,31 @@
         margin: auto;
     }
 
-    .rotateIt {
+    .moveIt {
         animation: rotate 5s linear infinite;
     }
 
+    .moveIt img {
+        animation: zoom .4s linear infinite;
+    }
+
+    @keyframes zoom {
+        0% {
+            transform: scale(1); /* Échelle normale */
+        }
+        50% {
+            transform: scale(1.2); /* Zoom */
+        }
+        100% {
+            transform: scale(1); /* Retour à l'échelle normale */
+        }
+    }
+
     @keyframes rotate {
-        from {
+        0% {
             transform: rotate(0deg);
         }
-        to {
+        100% {
             transform: rotate(360deg);
         }
     }
@@ -74,7 +90,7 @@
         var photo = document.querySelector('.photo');
 
         button.parentNode.removeChild(button);
-        photo.classList.add('rotateIt');
+        photo.classList.add('moveIt');
         audio.play();
     }
 </script>
