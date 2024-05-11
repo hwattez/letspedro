@@ -3,14 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Photo Tournante</title>
+<title>Let's Pedro!</title>
 <style>
     .photo {
-        width: 200px;
-        height: 200px;
+        width: min(90vw, 90vh);
+        height: min(90vw, 90vh);
         border-radius: 50%;
         overflow: hidden;
         position: relative;
+        margin: auto;
+    }
+
+    .rotateIt {
         animation: rotate 5s linear infinite;
     }
 
@@ -29,13 +33,25 @@
         object-fit: cover;
     }
 
-/* audio {
-    display: none;
-} */
+    body {
+        background-color: black;
+        margin-top: 5vh;
+    }
 
-body {
-    background-color: black;
-}
+    .play-button {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
@@ -44,21 +60,22 @@ body {
     <img src="caro.jpeg" alt="Photo">
 </div>
 
-<audio id="audio" autoplay loop>
+<audio id="audio" loop>
     <source src="pedro-pedro-pe.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
-<br><br>
-<button onclick="toggleAudio()">Toggle Audio</button>
+
+<button onclick="toggleAudio()" class="play-button">Play</button>
 
 <script>
     function toggleAudio() {
         var audio = document.getElementById("audio");
-        if (audio.paused) {
-            audio.play();
-        } else {
-            audio.pause();
-        }
+        var button = document.querySelector('.play-button');
+        var photo = document.querySelector('.photo');
+
+        button.parentNode.removeChild(button);
+        photo.classList.add('rotateIt');
+        audio.play();
     }
 </script>
 
